@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+
+# Secrets
+.env
+*.secret
+*.token
+*.key
+
+# Neovim
+nvim/.cache/
+nvim/.local/
+nvim/plugin/packer_compiled.lua
+nvim/lazy-lock.json
+
+# tmux
+tmux/plugins/
+tmux/resurrect/
+
+# Logs
+*.log
