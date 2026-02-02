@@ -12,6 +12,7 @@ return {
     opts = {
       enabled = true,
       render_modes = { "n", "i", "c" },
+      latex = { enabled = true },
     },
   },
 }
