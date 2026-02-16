@@ -1,5 +1,6 @@
 return {
-  { "ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim", name = "gruvbox", lazy = false },
+  { "sainnhe/everforest", name = "everforest", lazy = false },
   {
     "catppuccin/nvim",
     lazy = false,
@@ -19,7 +20,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "gruvbox",
     },
   },
 }

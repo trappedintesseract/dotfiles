@@ -21,3 +21,15 @@ vim.g.molten_virt_text_output = true
 vim.g.molten_virt_lines_off_by_1 = true
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.undofile = true
+
+vim.opt.ignorecase = true
+
+vim.opt.smartcase = true
+
+vim.opt.smarttab = true
+
+vim.opt.smartindent = true
+
+vim.opt.autoindent = true

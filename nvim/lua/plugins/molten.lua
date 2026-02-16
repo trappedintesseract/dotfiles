@@ -5,9 +5,11 @@ return {
     dependencies = { "3rd/image.nvim" },
     build = ":UpdateRemotePlugins",
     init = function()
-      -- these are examples, not defaults. Please see the readme
       vim.g.molten_image_provider = "image.nvim"
       vim.g.molten_output_win_max_height = 20
+
+      -- 🔥 important for ipynb
+      vim.g.molten_auto_init_behavior = "init"
     end,
   },
 }

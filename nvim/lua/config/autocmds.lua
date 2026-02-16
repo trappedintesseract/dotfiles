@@ -36,3 +36,38 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     vim.cmd("startinsert")
   end,
 })
+
+-- :NewNotebook name  → creates name.ipynb with valid metadata and opens it
+vim.api.nvim_create_user_command("NewNotebook", function(opts)
+  local name = opts.args ~= "" and opts.args or "notebook"
+  local file = name .. ".ipynb"
+
+  -- Do not overwrite existing file
+  if vim.loop.fs_stat(file) then
+    vim.notify(file .. " already exists", vim.log.levels.WARN)
+    vim.cmd("edit " .. file)
+    return
+  end
+
+  local lines = {
+    "{",
+    ' "cells": [],',
+    ' "metadata": {',
+    '  "kernelspec": {',
+    '   "name": "python3",',
+    '   "display_name": "Python 3",',
+    '   "language": "python"',
+    "  },",
+    '  "language_info": {',
+    '   "name": "python",',
+    '   "version": "3"',
+    "  }",
+    " },",
+    ' "nbformat": 4,',
+    ' "nbformat_minor": 5',
+    "}",
+  }
+
+  vim.fn.writefile(lines, file)
+  vim.cmd("edit " .. file)
+end, { nargs = "?" })

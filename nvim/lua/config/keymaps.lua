@@ -21,15 +21,6 @@ vim.keymap.set(
   ":noautocmd MoltenEnterOutput<CR>",
   { silent = true, desc = "show/enter output" }
 )
-vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
-vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
-vim.keymap.set(
-  "n",
-  "<localleader>os",
-  ":noautocmd MoltenEnterOutput<CR>",
-  { silent = true, desc = "show/enter output" }
-)
-
 local ls = require("luasnip")
 
 -- Expand or jump forward
@@ -45,3 +36,20 @@ vim.keymap.set({ "i", "s" }, "<C-h>", function()
     ls.jump(-1)
   end
 end, { silent = true })
+
+local home = vim.fn.expand("~")
+
+-- <space>fF → find files in HOME using Snacks
+vim.keymap.set("n", "<leader>fF", function()
+  require("snacks").picker.files({
+    cwd = home,
+    hidden = true,
+  })
+end, { desc = "Find Files (HOME)" })
+
+-- <space>fs → grep text in HOME using Snacks
+vim.keymap.set("n", "<leader>fs", function()
+  require("snacks").picker.grep({
+    cwd = home,
+  })
+end, { desc = "Grep (HOME)" })
