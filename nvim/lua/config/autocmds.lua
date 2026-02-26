@@ -7,6 +7,16 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 --
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+  callback = function()
+    local extra = 100
+    local last = vim.api.nvim_buf_line_count(0)
+
+    for i = 1, extra do
+      vim.api.nvim_buf_set_lines(0, last, last, false, { "" })
+    end
+  end,
+})
 vim.api.nvim_create_autocmd("BufNewFile", {
   pattern = { "*.c", "*.cpp" },
   callback = function()
